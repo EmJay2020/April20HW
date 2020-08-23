@@ -1,0 +1,16 @@
+﻿@model April20HW.Models.AddViewModel
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <form action="/home/add">
+        <input type="text" name="Title" placeholder="Title" />
+        <input type="text" name="PhoneNumber" placeholder="PhoneNumber" />
+        <textarea class="form-control" rows="10" name="Description"></textarea>
+        <input type="hidden" value="@Model.User.Id" name="UserId" />
+        <button class="btn btn-primary">Place Ad</button>
+    </form>
+</body>
+</html>
+

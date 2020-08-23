@@ -1,0 +1,17 @@
+﻿<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    @if (ViewBag.Message != null)
+    {
+        <span class="danger">@ViewBag.Message</span>
+    }
+    <form method="post">
+        <input type="text" class="form-control" name="email" placeholder="Email" />
+        <input type="password" class="form-control" name="password" placeholder="Password" />
+        <button class="btn btn-primary">Log In</button>
+    </form>
+</body>
+</html>
+

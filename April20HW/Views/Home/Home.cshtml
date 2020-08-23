@@ -1,0 +1,24 @@
+﻿@model April20HW.Models.HomeViewModel
+    <html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title></title>
+    </head>
+    <body>
+        <div class="container">
+            @foreach(Ads a in Model.Ads)
+            {
+                <div class="well">
+                    <h4>@a.Title</h4>
+                    <h4>@a.PhoneNumber</h4>
+                    <p class="lead">@a.Description</p>
+                    @if(Model.User != null && a.UserId == Model.User.Id )
+                    {
+                        <a class="btn btn-danger" href="/home/delete?Id=@a.Id">Delete</a>
+                    }
+                </div>
+            }
+        </div>
+    </body>
+    </html>
+
+

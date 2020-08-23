@@ -1,0 +1,20 @@
+﻿@model List<April20HW.Models.Ads>
+    <html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title></title>
+    </head>
+    <body>
+        <div class="container">
+            @foreach (Ads a in Model)
+            {
+                <div class="well">
+                    <h4>@a.Title</h4>
+                    <h4>@a.PhoneNumber</h4>
+                    <p class="lead">@a.Description</p>                   
+                    <a class="btn btn-danger" href="/home/delete?Id=@a.Id">Delete</a>                   
+                </div>
+            }
+        </div>
+    </body>
+    </html>
+
