@@ -9,5 +9,7 @@ namespace April20HW.Models
     {
         public List<Ads> Ads { get; set; }
         public Users User { get; set; }
+        public int? Previous { get; set; }
+        public int? Next { get; set; }
     }
 }

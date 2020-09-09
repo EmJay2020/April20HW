@@ -3,13 +3,26 @@
     <head>
         <title></title>
     </head>
-    <body>
+    <body id="my-body">
+        <div>
+            <br />
+            <span id="invalid" class="alert alert-danger" hidden></span>
+            <br />
+            <br />
+        </div>
         <form method="post">
-            <input type="text" name="Name" placeholder="Name" class="form-control" />
-            <input type="text" name="Email" placeholder="Email" class="form-control" />
-            <input type="text" name="Password" placeholder="Password" class="form-control" />
-            <button class="btn btn-primary">Sign Up</button>
+            <input type="text" name="Name" id="Name" placeholder="Name" class="form-control" />
+            <br />
+            <input type="text" name="Email" id="Email" placeholder="Email" class="form-control" />
+            <br />
+            <input type="text" name="Password" id="Password" placeholder="Password" class="form-control" />
+            <br />
+            <button id="btn" class="btn btn-primary" disabled>Sign Up</button>
         </form>
+        @section Scripts {
+
+            <script src="~/js/SignUpJs.js"></script>
+            }
     </body>
     </html>
 

@@ -4,20 +4,59 @@
         <title></title>
     </head>
     <body>
-        <div class="container">
-            @foreach(Ads a in Model.Ads)
+        <div class="container" id="container">
+            @if(ViewBag.Message != null)
+            {
+                <span class="alert alert-danger text-info" style="margin-top:20px">@ViewBag.Message</span>
+            }
+            <div class="row" style="margin-top:20px">
+                <div class="col-md-6">
+                    <input type="text" id="search" placeholder="search" class="input-sm" />
+                </div>
+
+            </div>
+            <br />
+            <br />
+            @foreach (Ads a in Model.Ads)
             {
                 <div class="well">
-                    <h4>@a.Title</h4>
+                    <div class="row" style="background-color:darkgoldenrod">
+                        <div class="col-lg-12" style="background-color:darkgoldenrod">
+                            <h1 class="h1" style="text-decoration-line:underline">@a.Title</h1>
+                        </div>
+                    </div>
                     <h4>@a.PhoneNumber</h4>
-                    <p class="lead">@a.Description</p>
-                    @if(Model.User != null && a.UserId == Model.User.Id )
+                    <div class="row">
+                        <div class="col-lg-11">
+                            <p >@a.Description</p>
+                        </div>
+                    </div>                    
+                    @if (Model.User != null && a.UserId == Model.User.Id)
                     {
                         <a class="btn btn-danger" href="/home/delete?Id=@a.Id">Delete</a>
                     }
                 </div>
             }
+            <div class="row">
+                <div class="col-md-2">
+                    @if (Model.Previous != null)
+                    {
+                        <a class="btn btn-primary" href="/home/home?page=@Model.Previous">Previous</a>
+                    }
+                </div>
+                <div class="col-md-offset-9 col-md-1">
+                    @if (Model.Next != null)
+                    {
+                        <a class="btn btn-primary" href="/home/home?page=@Model.Next">Next</a>
+                    }
+                </div>
+            </div>
+           
+          
         </div>
+        @section Scripts{ 
+                <script src="~/js/HomeJS.js"></script>
+        }
     </body>
     </html>
 

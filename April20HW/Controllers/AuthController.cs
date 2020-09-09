@@ -38,10 +38,10 @@ namespace April20HW.Controllers
         {
             var db = new DB(_connection);
             var user = db.LogIn(email, password);
-            if(user== null)
+            if(user == null)
             {
                 TempData["error"] = "Invalid Login";
-                return Redirect("/account/login");
+                return Redirect("/auth/login");
             }
             var claims = new List<Claim>
             {

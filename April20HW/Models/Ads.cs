@@ -43,8 +43,19 @@ namespace April20HW.Models
                 cmd.ExecuteNonQuery();
             }
         }
+        public int GetCount()
+        {
+            using (var connection = new SqlConnection(_connection))
+            using (var cmd = connection.CreateCommand())
+            {
+                cmd.CommandText = @"select count(*) from Ads";
+                connection.Open();
+                return (int)cmd.ExecuteScalar();
+            }
+        }
         public Users GetByEmail(string email)
         {
+            
             using (var connection = new SqlConnection(_connection))
             using (var cmd = connection.CreateCommand())
             {
@@ -93,15 +104,19 @@ namespace April20HW.Models
                 cmd.Parameters.AddWithValue("@UserId", ad.UserId);
                 connection.Open();
                 cmd.ExecuteNonQuery();
+                
             }
             
         }
-        public List<Ads> GetAds()
+        public List<Ads> GetAds(int skip, int amt)
         {
             using (var connection = new SqlConnection(_connection))
             using (var cmd = connection.CreateCommand())
             {
-                cmd.CommandText = @"select * from Ads";
+                cmd.CommandText = "getall";
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@skip", skip);
+                cmd.Parameters.AddWithValue("@amount", amt);
                 connection.Open();
                 var result = new List<Ads>();
                 var reader = cmd.ExecuteReader();
@@ -154,5 +169,6 @@ namespace April20HW.Models
                 return result;
             }
         }
+  
     }
 }
